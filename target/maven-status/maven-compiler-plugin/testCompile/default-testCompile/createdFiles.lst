@@ -1,0 +1,4 @@
+metrics\LocMetricTest.class
+rules\RuleEngineTest.class
+rules\HighComplexityRuleTest.class
+metrics\CyclomaticComplexityMetricTest.class
