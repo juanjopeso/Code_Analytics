@@ -1,0 +1,1707 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+analysis_report.json
+Ejemplo.java
+nbactions.xml
+pom.xml
+Simplecalculator_main.dot
+src/main/java/evaluation/PackageEvaluator.java
+src/main/java/graph/CFGBuilder.java
+src/main/java/graph/CFGEdge.java
+src/main/java/graph/CFGGraph.java
+src/main/java/graph/CFGNode.java
+src/main/java/graph/ControlFlowGraph.java
+src/main/java/graph/GraphvizExporter.java
+src/main/java/ia/AIRecommendationService.java
+src/main/java/ia/integration/OpenAIRecommendationService.java
+src/main/java/ia/RecommendationBuilder.java
+src/main/java/main/Main.java
+src/main/java/metrics/ClassMetrics.java
+src/main/java/metrics/CyclomaticComplexityMetric.java
+src/main/java/metrics/LocMetric.java
+src/main/java/metrics/MethodMetrics.java
+src/main/java/parser/JavaParserService.java
+src/main/java/report/JsonReportExporter.java
+src/main/java/report/ReportJSON.java
+src/main/java/report/ReportTXT.java
+src/main/java/rules/ClassEvaluator.java
+src/main/java/rules/ClassRule.java
+src/main/java/rules/EvaluationMode.java
+src/main/java/rules/EvaluationResult.java
+src/main/java/rules/GodClassRule.java
+src/main/java/rules/HighComplexityRule.java
+src/main/java/rules/LongMethodRule.java
+src/main/java/rules/MethodRule.java
+src/main/java/rules/ModerateComplexityRule.java
+src/main/java/rules/QualityIssue.java
+src/main/java/rules/QualityRule.java
+src/main/java/rules/RiskyMethodRule.java
+src/main/java/rules/RuleEngine.java
+src/main/java/ui/AnalyzerUI.java
+src/test/java/metrics/CyclomaticComplexityMetricTest.java
+src/test/java/metrics/LocMetricTest.java
+src/test/java/rules/HighComplexityRuleTest.java
+src/test/java/rules/RuleEngineTest.java
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="analysis_report.json">
+[
+  {
+    "class": "Simplecalculator",
+    "method": "main",
+    "loc": 18,
+    "cyclomaticComplexity": 3,
+    "score": 100,
+    "issues": []
+  }
+]
+</file>
+
+<file path="Ejemplo.java">
+public class Ejemplo {
+
+    // Método BUENO (control)
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Método REGULAR (largo + complejidad moderada)
+    public double calcularDescuento(
+            double precio,
+            boolean esClienteVIP,
+            boolean tieneCupon,
+            boolean esFestivo,
+            int cantidad
+    ) {
+
+        double descuento = 0;
+
+        if (precio > 100) {
+            descuento += 0.05;
+        } else {
+            descuento += 0.02;
+        }
+
+        if (esClienteVIP) {
+            descuento += 0.10;
+        } else {
+            descuento += 0.03;
+        }
+
+        if (tieneCupon) {
+            descuento += 0.07;
+        } else {
+            descuento += 0.01;
+        }
+
+        if (esFestivo) {
+            descuento += 0.04;
+        }
+
+        if (cantidad > 10) {
+            descuento += 0.06;
+        }
+
+        return precio * descuento;
+    }
+
+    // Método MALO (muy largo + loops + condicionales)
+    public void procesarPedido(
+            int tipoPedido,
+            boolean pagado,
+            boolean enviado,
+            boolean entregado,
+            int intentos
+    ) {
+
+        if (tipoPedido == 1) {
+            System.out.println("Pedido normal");
+        } else {
+            System.out.println("Pedido especial");
+        }
+
+        if (pagado) {
+            System.out.println("Pago confirmado");
+        } else {
+            System.out.println("Pago pendiente");
+        }
+
+        if (!enviado) {
+            for (int i = 0; i < intentos; i++) {
+                System.out.println("Reintentando envío...");
+            }
+        }
+
+        if (entregado) {
+            System.out.println("Pedido entregado");
+        } else {
+            System.out.println("Pedido no entregado");
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Verificación " + i);
+            }
+        }
+    }
+
+    // 🔥 MÉTODOS EXTRA PARA FORZAR GOD CLASS
+    public void log(String msg) {
+        System.out.println(msg);
+    }
+
+    public void validarEstado(int estado) {
+        if (estado == 1) log("OK");
+        else log("ERROR");
+    }
+
+    public void guardarBD() {
+        System.out.println("Guardando en base de datos...");
+    }
+
+    public void enviarCorreo() {
+        System.out.println("Enviando correo...");
+    }
+
+    public void generarFactura() {
+        System.out.println("Generando factura...");
+    }
+}
+</file>
+
+<file path="nbactions.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>main.Main</exec.mainClass>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs></exec.appArgs>
+                <exec.mainClass>main.Main</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.mainClass>main.Main</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <exec.appArgs></exec.appArgs>
+            </properties>
+        </action>
+    </actions>
+</file>
+
+<file path="src/main/java/graph/CFGBuilder.java">
+package graph;
+
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.*;
+
+public class CFGBuilder {
+
+    public ControlFlowGraph build(MethodDeclaration method) {
+        ControlFlowGraph cfg = new ControlFlowGraph();
+
+        CFGNode start = cfg.addNode("START");
+        CFGNode end = cfg.addNode("END");
+
+        if (!method.getBody().isPresent()) {
+            cfg.addEdge(start, end);
+            return cfg;
+        }
+
+        CFGNode last = start;
+
+        for (Statement stmt : method.getBody().get().getStatements()) {
+
+            if (stmt instanceof IfStmt) {
+                CFGNode ifNode = cfg.addNode("IF");
+                cfg.addEdge(last, ifNode);
+
+                CFGNode thenNode = cfg.addNode("THEN");
+                CFGNode elseNode = cfg.addNode("ELSE");
+
+                cfg.addEdge(ifNode, thenNode);
+                cfg.addEdge(ifNode, elseNode);
+
+                last = cfg.addNode("JOIN");
+
+            } else if (stmt instanceof ForStmt || stmt instanceof WhileStmt) {
+                CFGNode loop = cfg.addNode("LOOP");
+                cfg.addEdge(last, loop);
+                cfg.addEdge(loop, loop);
+                last = loop;
+
+            } else {
+                CFGNode stmtNode = cfg.addNode("STMT");
+                cfg.addEdge(last, stmtNode);
+                last = stmtNode;
+            }
+        }
+
+        cfg.addEdge(last, end);
+        return cfg;
+    }
+}
+</file>
+
+<file path="src/main/java/graph/CFGEdge.java">
+package graph;
+
+public class CFGEdge {
+    public final CFGNode from;
+    public final CFGNode to;
+
+    public CFGEdge(CFGNode from, CFGNode to) {
+        this.from = from;
+        this.to = to;
+    }
+}
+</file>
+
+<file path="src/main/java/graph/CFGGraph.java">
+package graph;
+
+import java.util.*;
+
+public class CFGGraph {
+
+    private final Set<String> nodes = new HashSet<>();
+    private final List<String[]> edges = new ArrayList<>();
+
+    public void addNode(String node) {
+        nodes.add(node);
+    }
+
+    public void addEdge(String from, String to) {
+        nodes.add(from);
+        nodes.add(to);
+        edges.add(new String[]{from, to});
+    }
+
+    public Set<String> getNodes() {
+        return nodes;
+    }
+
+    public List<String[]> getEdges() {
+        return edges;
+    }
+}
+</file>
+
+<file path="src/main/java/graph/CFGNode.java">
+package graph;
+
+public class CFGNode {
+
+    private final String label;
+
+    public CFGNode(String label) {
+        this.label = label;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
+}
+</file>
+
+<file path="src/main/java/graph/ControlFlowGraph.java">
+package graph;
+
+import java.util.*;
+
+public class ControlFlowGraph {
+
+    private final Set<CFGNode> nodes = new HashSet<>();
+    private final List<CFGEdge> edges = new ArrayList<>();
+
+    public CFGNode addNode(String label) {
+        CFGNode node = new CFGNode(label);
+        nodes.add(node);
+        return node;
+    }
+
+    public void addEdge(CFGNode from, CFGNode to) {
+        edges.add(new CFGEdge(from, to));
+    }
+
+    public List<CFGEdge> getEdges() {
+        return edges;
+    }
+
+    public void print() {
+        System.out.println("    CFG:");
+        for (CFGEdge e : edges) {
+            System.out.println("      " + e.from + " -> " + e.to);
+        }
+    }
+    public void printIndented(String indent) {
+    for (CFGEdge e : edges) {
+        System.out.println(indent + e.from + " -> " + e.to);
+    }
+}
+
+}
+</file>
+
+<file path="src/main/java/graph/GraphvizExporter.java">
+package graph;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class GraphvizExporter {
+
+    public static void export(ControlFlowGraph cfg, String fileName) {
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write("digraph CFG {\n");
+
+            for (CFGEdge edge : cfg.getEdges()) {
+                writer.write(
+                    "  \"" + edge.from + "\" -> \"" + edge.to + "\";\n"
+                );
+            }
+
+            writer.write("}\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/ia/AIRecommendationService.java">
+package ia;
+
+public interface AIRecommendationService {
+
+    String generateRecommendation(String context);
+
+}
+</file>
+
+<file path="src/main/java/ia/integration/OpenAIRecommendationService.java">
+package ia.integration;
+
+import ia.AIRecommendationService;
+import com.google.gson.*;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class OpenAIRecommendationService implements AIRecommendationService {
+
+    private final String apiKey;
+    private final HttpClient client = HttpClient.newHttpClient();
+
+    public OpenAIRecommendationService(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    @Override
+    public String generateRecommendation(String context) {
+
+        try {
+
+            JsonObject message = new JsonObject();
+            message.addProperty("role", "user");
+            message.addProperty("content", context);
+
+            JsonArray messages = new JsonArray();
+            messages.add(message);
+
+            JsonObject body = new JsonObject();
+            body.addProperty("model", "gpt-4o-mini");
+            body.add("messages", messages);
+            body.addProperty("temperature", 0.3);
+            body.addProperty("max_tokens", 180);
+
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://api.openai.com/v1/chat/completions"))
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + apiKey)
+                    .POST(HttpRequest.BodyPublishers.ofString(body.toString()))
+                    .build();
+
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
+            //System.out.println("RAW RESPONSE:");
+            //System.out.println(response.body());
+
+
+            JsonObject jsonResponse =
+                    JsonParser.parseString(response.body()).getAsJsonObject();
+
+            JsonArray choices = jsonResponse.getAsJsonArray("choices");
+
+            if (choices != null && choices.size() > 0) {
+                JsonObject messageObj =
+                        choices.get(0).getAsJsonObject()
+                                .getAsJsonObject("message");
+
+                return messageObj.get("content").getAsString().trim();
+            }
+
+            return "No recommendation generated.";
+
+        } catch (IOException | InterruptedException e) {
+            return "Error generating AI recommendation: " + e.getMessage();
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/ia/RecommendationBuilder.java">
+package ia;
+
+import rules.QualityIssue;
+import metrics.MethodMetrics;
+
+public class RecommendationBuilder {
+
+    public static String buildPrompt(QualityIssue issue, MethodMetrics metrics) {
+
+        String methodName = metrics.getMethodName();
+        int loc = metrics.getLoc();
+        int cc = metrics.getCyclomaticComplexity();
+
+        switch (issue.getType()) {
+
+            case "Long Method":
+                return "El método " + methodName +
+                        " tiene " + loc + " líneas. " +
+                        "Propón cómo dividirlo en submétodos con nombres concretos.";
+
+            case "High Complexity":
+                return "El método " + methodName +
+                        " tiene complejidad ciclomática de " + cc +
+                        ". Sugiere cómo reducir condicionales usando principios SOLID.";
+
+            case "Moderate Complexity":
+                return "El método " + methodName +
+                        " presenta complejidad moderada (" + cc + "). " +
+                        "¿Cómo mejorarías su estructura interna?";
+
+            case "Risky Method":
+                return "El método " + methodName +
+                        " es largo y complejo. " +
+                        "Propón una refactorización estructural concreta.";
+
+            default:
+                return "Analiza el método " + methodName +
+                        " y propone mejoras técnicas específicas.";
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/main/Main.java">
+package main;
+
+import ui.AnalyzerUI;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new AnalyzerUI().setVisible(true);
+        });     
+    }
+}
+</file>
+
+<file path="src/main/java/metrics/ClassMetrics.java">
+package metrics;
+
+public class ClassMetrics {
+
+    private final String className;
+    private final int totalLoc;
+    private final int methodCount;
+    private final int totalCC;
+
+    public ClassMetrics(String className, int totalLoc, int methodCount, int totalCC) {
+        this.className = className;
+        this.totalLoc = totalLoc;
+        this.methodCount = methodCount;
+        this.totalCC = totalCC;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public int getTotalLoc() {
+        return totalLoc;
+    }
+
+    public int getMethodCount() {
+        return methodCount;
+    }
+
+    public int getTotalCC() {
+        return totalCC;
+    }
+}
+</file>
+
+<file path="src/main/java/metrics/CyclomaticComplexityMetric.java">
+package metrics;
+
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.stmt.*;
+
+public class CyclomaticComplexityMetric {
+
+    public int calculate(MethodDeclaration method) {
+        int complexity = 1; // base
+
+        complexity += method.findAll(IfStmt.class).size();
+        complexity += method.findAll(ForStmt.class).size();
+        complexity += method.findAll(WhileStmt.class).size();
+        complexity += method.findAll(DoStmt.class).size();
+        complexity += method.findAll(SwitchEntry.class).size();
+        complexity += method.findAll(CatchClause.class).size();
+
+        return complexity;
+    }
+}
+</file>
+
+<file path="src/main/java/metrics/LocMetric.java">
+package metrics;
+
+import com.github.javaparser.ast.body.MethodDeclaration;
+
+public class LocMetric {
+
+    public int calculate(MethodDeclaration method) {
+        if (method.getRange().isPresent()) {
+            int begin = method.getRange().get().begin.line;
+            int end = method.getRange().get().end.line;
+            return end - begin + 1;
+        }
+        return 0;
+    }
+}
+</file>
+
+<file path="src/main/java/metrics/MethodMetrics.java">
+package metrics;
+
+public class MethodMetrics {
+
+    private final String methodName;
+    private final int loc;
+    private final int cyclomaticComplexity;
+
+    public MethodMetrics(String methodName, int loc, int cyclomaticComplexity) {
+        this.methodName = methodName;
+        this.loc = loc;
+        this.cyclomaticComplexity = cyclomaticComplexity;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public int getLoc() {
+        return loc;
+    }
+
+    public int getCyclomaticComplexity() {
+        return cyclomaticComplexity;
+    }
+}
+</file>
+
+<file path="src/main/java/parser/JavaParserService.java">
+package parser;
+
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
+
+import metrics.LocMetric;
+import metrics.CyclomaticComplexityMetric;
+import metrics.MethodMetrics;
+
+import rules.RuleEngine;
+import rules.EvaluationResult;
+import rules.QualityIssue;
+
+import graph.CFGBuilder;
+import graph.ControlFlowGraph;
+import graph.GraphvizExporter;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import ia.AIRecommendationService;
+import ia.integration.OpenAIRecommendationService;
+
+import report.JsonReportExporter;
+
+
+public class JavaParserService {
+
+    private final LocMetric locMetric = new LocMetric();
+    private final CyclomaticComplexityMetric ccMetric = new CyclomaticComplexityMetric();
+    private final RuleEngine ruleEngine = new RuleEngine();
+    private final CFGBuilder cfgBuilder = new CFGBuilder();
+    private final JsonReportExporter reportExporter = new JsonReportExporter();
+
+
+    private final AIRecommendationService aiService =
+            new OpenAIRecommendationService(
+                    System.getenv("OPENAI_API_KEY")
+            );
+
+    public void parseFile(String path) {
+
+        try {
+            CompilationUnit cu = StaticJavaParser.parse(new File(path));
+
+            cu.findAll(ClassOrInterfaceDeclaration.class)
+                    .forEach(this::analyzeClass);
+
+        } catch (FileNotFoundException e) {
+            System.out.println(" Archivo no encontrado: " + path);
+        }
+    }
+
+    private void analyzeClass(ClassOrInterfaceDeclaration clase) {
+
+        System.out.println("\n------------------------");
+        System.out.println("CLASE: " + clase.getNameAsString());
+        System.out.println("--------------------------");
+
+        int classScore = 100;
+        int badMethods = 0;
+
+        for (MethodDeclaration method : clase.getMethods()) {
+
+            String methodName = method.getNameAsString();
+            int loc = locMetric.calculate(method);
+            int cc  = ccMetric.calculate(method);
+
+            MethodMetrics metrics = new MethodMetrics(methodName, loc, cc);
+            EvaluationResult result = ruleEngine.evaluate(metrics);
+
+            System.out.println("\n-----------------------");
+            System.out.println(" Método: " + methodName);
+            System.out.println("   LOC: " + loc + " | CC: " + cc);
+            System.out.println("   Puntaje: " + result.getScore());
+            System.out.println("   Nivel: " + result.getLevel());
+
+            // CFG
+            ControlFlowGraph cfg = cfgBuilder.build(method);
+            System.out.println("   CFG:");
+            cfg.printIndented("      ");
+
+            if (result.getIssues().isEmpty()) {
+
+                System.out.println("  Sin problemas detectados");
+
+            } else {
+
+                badMethods++;
+                classScore -= (100 - result.getScore());
+
+                System.out.println("\n   Problemas detectados:");
+
+                StringBuilder issuesContext = new StringBuilder();
+
+                for (QualityIssue issue : result.getIssues()) {
+
+                    System.out.println("     • " + issue.getType()
+                            + " -> " + issue.getDescription());
+
+                    issuesContext.append("- ")
+                            .append(issue.getType())
+                            .append(": ")
+                            .append(issue.getDescription())
+                            .append("\n");
+                }
+
+                String context =
+                        "Análisis de método Java:\n" +
+                        "Nombre: " + methodName + "\n" +
+                        "Líneas de código: " + loc + "\n" +
+                        "Complejidad ciclomática: " + cc + "\n" +
+                        "Problemas detectados:\n" +
+                        issuesContext +
+                        "\nGenera una recomendación técnica de refactorización en español, clara y profesional. " +
+                        "Máximo 100 palabras. No incluyas ejemplos largos de código.";
+
+                String aiSuggestion = aiService.generateRecommendation(context);
+                for (QualityIssue issue : result.getIssues()) {
+                    issue.setSuggestion(aiSuggestion);
+                }
+                
+
+
+                System.out.println("\n  Recomendación IA:");
+                System.out.println("   ---------------------");
+                System.out.println("   " + aiSuggestion);
+            }
+
+            GraphvizExporter.export(
+                    cfg,
+                    clase.getNameAsString() + "_" + methodName + ".dot"
+            );
+            
+            reportExporter.addMethodReport(
+                    clase.getNameAsString(),
+                    metrics,
+                    result
+            );
+        }
+
+        // 🔥 Evaluación final de clase
+        classScore = Math.max(classScore, 0);
+
+        String classLevel =
+                classScore >= 80 ? "BUENO" :
+                classScore >= 50 ? "REGULAR" : "MALO";
+
+        System.out.println("\n-------------------------");
+        System.out.println(" Evaluación Final de Clase");
+        System.out.println("   Puntaje: " + classScore);
+        System.out.println("   Nivel: " + classLevel);
+
+        if (badMethods >= 2) {
+
+            System.out.println("\n GOD CLASS detectada");
+            System.out.println("   Métodos problemáticos: " + badMethods);
+
+            String classContext =
+                    "Análisis de clase Java:\n" +
+                    "Nombre de clase: " + clase.getNameAsString() + "\n" +
+                    "Métodos problemáticos: " + badMethods + "\n" +
+                    "Genera una recomendación arquitectónica en español, clara y profesional. " +
+                    "Máximo 120 palabras.";
+
+            String classAISuggestion =
+                    aiService.generateRecommendation(classContext);
+
+            System.out.println("\nRecomendación Arquitectónica IA:");
+            System.out.println("------------------------");
+            System.out.println(classAISuggestion);
+
+        } else {
+            System.out.println("\n Clase bien estructurada");
+        }
+        
+        reportExporter.export("analysis_report.json");
+        System.out.println("-------------------------\n");
+    }
+}
+</file>
+
+<file path="src/main/java/report/JsonReportExporter.java">
+package report;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+import rules.EvaluationResult;
+import rules.QualityIssue;
+import metrics.MethodMetrics;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+public class JsonReportExporter {
+
+    private final JsonArray methodsArray = new JsonArray();
+
+    public void addMethodReport(
+            String className,
+            MethodMetrics metrics,
+            EvaluationResult result) {
+
+        JsonObject methodJson = new JsonObject();
+
+        methodJson.addProperty("class", className);
+        methodJson.addProperty("method", metrics.getMethodName());
+        methodJson.addProperty("loc", metrics.getLoc());
+        methodJson.addProperty("cyclomaticComplexity",
+                metrics.getCyclomaticComplexity());
+        methodJson.addProperty("score", result.getScore());
+        methodJson.addProperty("level", result.getLevel());
+
+        JsonArray issuesArray = new JsonArray();
+
+        for (QualityIssue issue : result.getIssues()) {
+
+            JsonObject issueJson = new JsonObject();
+            issueJson.addProperty("type", issue.getType());
+            issueJson.addProperty("description",
+                    issue.getDescription());
+            issueJson.addProperty("suggestion",
+                    issue.getSuggestion());
+
+            issuesArray.add(issueJson);
+        }
+
+        methodJson.add("issues", issuesArray);
+
+        methodsArray.add(methodJson);
+    }
+
+    public void export(String fileName) {
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+            gson.toJson(methodsArray, writer);
+        } catch (IOException e) {
+            System.out.println("Error exportando JSON: " + e.getMessage());
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/report/ReportJSON.java">
+package report;
+
+public class ReportJSON {
+
+    public static String create(String className, int score, String level) {
+        return """
+        {
+          "class": "%s",
+          "score": %d,
+          "level": "%s"
+        }
+        """.formatted(className, score, level);
+    }
+}
+</file>
+
+<file path="src/main/java/report/ReportTXT.java">
+package report;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReportTXT {
+
+    public static void export(String content, String fileName) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(content);
+        } catch (IOException e) {
+            System.out.println("Error escribiendo reporte");
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/rules/ClassEvaluator.java">
+package rules;
+
+import metrics.ClassMetrics;
+import java.util.*;
+
+public class ClassEvaluator {
+
+    private final List<ClassRule> rules = new ArrayList<>();
+
+    public ClassEvaluator() {
+        rules.add(new GodClassRule());
+    }
+
+    public EvaluationResult evaluate(ClassMetrics classMetrics) {
+
+        int score = 100;
+        List<QualityIssue> issues = new ArrayList<>();
+
+        for (ClassRule rule : rules) {
+            QualityIssue issue = rule.evaluate(classMetrics);
+            if (issue != null) {
+                issues.add(issue);
+                score -= issue.getPenalty();
+            }
+        }
+
+        if (score < 0) score = 0;
+
+        return new EvaluationResult(
+            classMetrics.getClassName(),
+            score,
+            issues
+        );
+    }
+}
+</file>
+
+<file path="src/main/java/rules/ClassRule.java">
+package rules;
+
+import metrics.ClassMetrics;
+
+public interface ClassRule {
+    QualityIssue evaluate(ClassMetrics metrics);
+}
+</file>
+
+<file path="src/main/java/rules/EvaluationMode.java">
+package rules;
+
+public enum EvaluationMode {
+    LAXO,
+    NORMAL,
+    ESTRICTO
+}
+</file>
+
+<file path="src/main/java/rules/EvaluationResult.java">
+package rules;
+
+import java.util.List;
+
+public class EvaluationResult {
+
+    private final String methodName;
+    private final int score;
+    private  String level;
+    private final List<QualityIssue> issues;
+
+    public EvaluationResult(String methodName, int score, List<QualityIssue> issues) {
+        this.methodName = methodName;
+        this.score = score;
+        this.issues = issues;
+        this.level = calculateLevel(score);
+    }
+
+    private String calculateLevel(int score) {
+        if (score >= 85) level = "EXCELENTE";
+        else if (score >= 70) level = "BUENO";
+        else if (score >= 50) level = "REGULAR";
+        else if (score >= 30) level = "MALO";
+        else level = "CRITICO";
+        return null;
+    }
+
+    public int getScore() { return score; }
+    public String getLevel() { return level; }
+    public List<QualityIssue> getIssues() { return issues; }
+}
+</file>
+
+<file path="src/main/java/rules/GodClassRule.java">
+package rules;
+
+import metrics.ClassMetrics;
+
+public class GodClassRule implements ClassRule {
+
+    @Override
+    public QualityIssue evaluate(ClassMetrics metrics) {
+
+        int flags = 0;
+
+        if (metrics.getTotalLoc() > 200) flags++;
+        if (metrics.getMethodCount() > 10) flags++;
+        if (metrics.getTotalCC() > 20) flags++;
+
+        if (flags >= 2) {
+            return new QualityIssue(
+                "GOD_CLASS",
+                "Clase con demasiadas responsabilidades",
+                40,
+                "Dividir la clase en componentes más pequeños (SRP)"
+            );
+        }
+
+        return null;
+    }
+}
+</file>
+
+<file path="src/main/java/rules/HighComplexityRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class HighComplexityRule implements MethodRule {
+
+    @Override
+    public List<QualityIssue> check(MethodMetrics metrics) {
+
+        List<QualityIssue> issues = new ArrayList<>();
+
+        int cc = metrics.getCyclomaticComplexity();
+
+        if (cc >= 8) {
+            issues.add(new QualityIssue(
+                    "High Complexity",
+                    "Complejidad ciclomática muy alta (" + cc + ")",
+                    40,
+                    "Reducir condicionales anidados o aplicar Strategy Pattern."
+            ));
+        }
+        else if (cc >= 5) {
+            issues.add(new QualityIssue(
+                    "Moderate Complexity",
+                    "Complejidad ciclomática moderada (" + cc + ")",
+                    25,
+                    "Simplificar estructuras if-else."
+            ));
+        }
+
+        return issues;
+    }
+}
+</file>
+
+<file path="src/main/java/rules/LongMethodRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class LongMethodRule implements MethodRule {
+
+    @Override
+    public List<QualityIssue> check(MethodMetrics metrics) {
+
+        List<QualityIssue> issues = new ArrayList<>();
+
+        int loc = metrics.getLoc();
+
+        if (loc > 50) {
+            issues.add(new QualityIssue(
+                    "Long Method",
+                    "El método tiene más de 50 líneas (" + loc + ")",
+                    35,
+                    "Dividir el método en submétodos más pequeños (Extract Method)."
+            ));
+        }
+        else if (loc > 30) {
+            issues.add(new QualityIssue(
+                    "Long Method",
+                    "El método tiene más de 30 líneas (" + loc + ")",
+                    20,
+                    "Aplicar refactorización para mejorar legibilidad."
+            ));
+        }
+
+        return issues;
+    }
+}
+</file>
+
+<file path="src/main/java/rules/MethodRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.List;
+
+public interface MethodRule {
+    List<QualityIssue> check(MethodMetrics metrics);
+}
+</file>
+
+<file path="src/main/java/rules/ModerateComplexityRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ModerateComplexityRule implements MethodRule {
+
+    @Override
+    public List<QualityIssue> check(MethodMetrics metrics) {
+
+        List<QualityIssue> issues = new ArrayList<>();
+
+        int cc = metrics.getCyclomaticComplexity();
+
+        if (cc >= 5 && cc < 8) {
+            issues.add(new QualityIssue(
+                    "Moderate Complexity",
+                    "Complejidad ciclomática moderada (" + cc + ")",
+                    25,
+                    "Considere simplificar condicionales."
+            ));
+        }
+
+        return issues;
+    }
+}
+</file>
+
+<file path="src/main/java/rules/QualityIssue.java">
+package rules;
+
+public class QualityIssue {
+
+    private final String type;
+    private final String description;
+    private final int penalty;
+    private String suggestion;
+
+    // Constructor básico
+    public QualityIssue(String type, String description, int penalty) {
+        this.type = type;
+        this.description = description;
+        this.penalty = penalty;
+    }
+
+    // Constructor con sugerencia
+    public QualityIssue(String type, String description, int penalty, String suggestion) {
+        this.type = type;
+        this.description = description;
+        this.penalty = penalty;
+        this.suggestion = suggestion;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getPenalty() {
+        return penalty;
+    }
+
+    public String getSuggestion() {
+        return suggestion;
+    }
+
+    public void setSuggestion(String suggestion) {
+        this.suggestion = suggestion;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" • ").append(type)
+          .append("\n   ").append(description)
+          .append("\n   Penalización: -").append(penalty);
+
+        if (suggestion != null && !suggestion.isEmpty()) {
+            sb.append("\n   Sugerencia: ").append(suggestion);
+        }
+
+        return sb.toString();
+    }
+}
+</file>
+
+<file path="src/main/java/rules/QualityRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+
+public interface QualityRule {
+    QualityIssue evaluate(MethodMetrics metrics);
+}
+</file>
+
+<file path="src/main/java/rules/RiskyMethodRule.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RiskyMethodRule implements MethodRule {
+
+    @Override
+    public List<QualityIssue> check(MethodMetrics metrics) {
+
+        List<QualityIssue> issues = new ArrayList<>();
+
+        int loc = metrics.getLoc();
+        int cc = metrics.getCyclomaticComplexity();
+
+        if (loc > 30 && cc >= 5) {
+            issues.add(new QualityIssue(
+                    "Risky Method",
+                    "Método largo y complejo",
+                    15,
+                    "Se recomienda refactorización estructural."
+            ));
+        }
+
+        return issues;
+    }
+}
+</file>
+
+<file path="src/main/java/rules/RuleEngine.java">
+package rules;
+
+import metrics.MethodMetrics;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RuleEngine {
+
+    private final List<MethodRule> rules;
+
+    public RuleEngine() {
+        rules = new ArrayList<>();
+        rules.add(new LongMethodRule());
+        rules.add(new HighComplexityRule());
+        rules.add(new ModerateComplexityRule());
+        rules.add(new RiskyMethodRule());
+    }
+
+    public EvaluationResult evaluate(MethodMetrics metrics) {
+
+        List<QualityIssue> issues = new ArrayList<>();
+
+        // Ejecutar todas las reglas
+        for (MethodRule rule : rules) {
+            issues.addAll(rule.check(metrics));
+        }
+
+        // Calcular score acumulativo
+        int score = 100;
+
+        for (QualityIssue issue : issues) {
+            score -= issue.getPenalty();
+        }
+
+        if (score < 0) {
+            score = 0;
+        }
+
+        return new EvaluationResult(
+                metrics.getMethodName(),
+                score,
+                issues
+        );
+    }
+}
+</file>
+
+<file path="src/main/java/ui/AnalyzerUI.java">
+package ui;
+
+import parser.JavaParserService;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+
+public class AnalyzerUI extends JFrame {
+
+    private JTextField pathField;
+    private JTextArea outputArea;
+
+    public AnalyzerUI() {
+
+        setTitle("Java Code Analyzer con IA");
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        initComponents();
+    }
+
+    private void initComponents() {
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+
+        pathField = new JTextField();
+        JButton browseButton = new JButton("Seleccionar Carpeta");
+        JButton analyzeButton = new JButton("Analizar");
+
+        topPanel.add(pathField, BorderLayout.CENTER);
+        topPanel.add(browseButton, BorderLayout.WEST);
+        topPanel.add(analyzeButton, BorderLayout.EAST);
+
+        outputArea = new JTextArea();
+        outputArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(outputArea);
+
+        add(topPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+
+        // 🔥 Acción botón carpeta
+        browseButton.addActionListener(e -> chooseFolder());
+
+        // 🔥 Acción botón analizar
+        analyzeButton.addActionListener(e -> analyzeProject());
+    }
+
+    private void chooseFolder() {
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        int result = chooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFolder = chooser.getSelectedFile();
+            pathField.setText(selectedFolder.getAbsolutePath());
+        }
+    }
+
+    private void analyzeProject() {
+
+    String path = pathField.getText();
+
+    if (path.isEmpty()) {
+        JOptionPane.showMessageDialog(this,
+                "Selecciona una carpeta primero.");
+        return;
+    }
+
+    outputArea.setText("Analizando proyecto...\n");
+
+    SwingWorker<Void, String> worker = new SwingWorker<>() {
+
+        @Override
+        protected Void doInBackground() {
+
+            JavaParserService parser = new JavaParserService();
+            processDirectory(new File(path), parser);
+
+            return null;
+        }
+
+        @Override
+        protected void done() {
+            outputArea.append("\nAnálisis completado.\n");
+            outputArea.append("Reporte generado: analysis_report.json\n");
+        }
+    };
+
+    worker.execute();
+}
+
+
+    private void processDirectory(File dir,
+                                  JavaParserService parser) {
+
+        for (File file : dir.listFiles()) {
+
+            if (file.isDirectory()) {
+                processDirectory(file, parser);
+            }
+
+            if (file.getName().endsWith(".java")) {
+                outputArea.append("Analizando: "
+                        + file.getName() + "\n");
+                parser.parseFile(file.getAbsolutePath());
+            }
+        }
+    }
+}
+</file>
+
+<file path="src/test/java/metrics/CyclomaticComplexityMetricTest.java">
+package metrics;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import org.junit.jupiter.api.Test;
+
+public class CyclomaticComplexityMetricTest {
+
+    @Test
+    void shouldCalculateComplexityCorrectly() {
+        String code = """
+                class A {
+                    void test(int x) {
+                        if(x > 0) {
+                            System.out.println(x);
+                        } else {
+                            System.out.println(-x);
+                        }
+                    }
+                }
+                """;
+
+        MethodDeclaration method =
+                StaticJavaParser.parse(code)
+                        .findFirst(MethodDeclaration.class)
+                        .get();
+
+        CyclomaticComplexityMetric metric = new CyclomaticComplexityMetric();
+        int cc = metric.calculate(method);
+
+        assertTrue(cc >= 2);
+    }
+}
+</file>
+
+<file path="src/test/java/metrics/LocMetricTest.java">
+package metrics;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.github.javaparser.StaticJavaParser;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import org.junit.jupiter.api.Test;
+
+public class LocMetricTest {
+
+    @Test
+    void shouldCalculateLocCorrectly() {
+        String code = """
+                class A {
+                    void test() {
+                        int a = 1;
+                        int b = 2;
+                        int c = a + b;
+                    }
+                }
+                """;
+
+        MethodDeclaration method =
+                StaticJavaParser.parse(code)
+                        .findFirst(MethodDeclaration.class)
+                        .get();
+
+        LocMetric metric = new LocMetric();
+        int loc = metric.calculate(method);
+
+        assertEquals(5, loc);
+    }
+}
+</file>
+
+<file path="src/test/java/rules/HighComplexityRuleTest.java">
+package rules;
+
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import metrics.MethodMetrics;
+import org.junit.jupiter.api.Test;
+
+
+public class HighComplexityRuleTest {
+
+    @Test
+    void shouldDetectHighComplexity() {
+        HighComplexityRule rule = new HighComplexityRule();
+        MethodMetrics metrics = new MethodMetrics("test", 10, 15);
+
+        List<QualityIssue> issues = rule.check(metrics);
+
+        assertFalse(issues.isEmpty());
+        assertEquals("High Complexity", issues.get(0).getType());
+    }
+
+    @Test
+    void shouldAllowLowComplexity() {
+        HighComplexityRule rule = new HighComplexityRule();
+        MethodMetrics metrics = new MethodMetrics("test", 10, 2);
+
+        List<QualityIssue> issues = rule.check(metrics); 
+
+        assertTrue(issues.isEmpty()); 
+    }
+}
+</file>
+
+<file path="src/test/java/rules/RuleEngineTest.java">
+package rules;
+
+import static org.junit.jupiter.api.Assertions.*;
+import metrics.MethodMetrics;
+import org.junit.jupiter.api.Test;
+
+public class RuleEngineTest {
+
+    @Test
+    void shouldEvaluateMethodAndReturnIssues() {
+        MethodMetrics metrics = new MethodMetrics("test", 100, 20);
+
+        RuleEngine engine = new RuleEngine();
+        EvaluationResult result = engine.evaluate(metrics);
+
+        assertFalse(result.getIssues().isEmpty());
+        assertTrue(result.getScore() < 100);
+    }
+
+    @Test
+    void shouldReturnGoodScoreForCleanMethod() {
+        MethodMetrics metrics = new MethodMetrics("test", 5, 1);
+
+        RuleEngine engine = new RuleEngine();
+        EvaluationResult result = engine.evaluate(metrics);
+
+        assertTrue(result.getIssues().isEmpty());
+        assertTrue(result.getScore() >= 80);
+    }
+}
+</file>
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany</groupId>
+    <artifactId>CodeQualityAnalyzer</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <exec.mainClass>com.mycompany.codequalityanalyzer.CodeQualityAnalyzer</exec.mainClass>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.27.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.0</version>
+        <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+</file>
+
+<file path="src/main/java/evaluation/PackageEvaluator.java">
+package evaluation;
+
+public class PackageEvaluator {
+
+    private int totalClasses = 0;
+    private int totalLOC = 0;
+    private int totalCC = 0;
+
+    public void addClass(int loc, int cc) {
+        totalClasses++;
+        totalLOC += loc;
+        totalCC += cc;
+    }
+
+    public void printReport() {
+        System.out.println("\nEvaluación de Paquete");
+        System.out.println("-----------------------");
+        System.out.println("Clases: " + totalClasses);
+        System.out.println("LOC total: " + totalLOC);
+        System.out.println("CC total: " + totalCC);
+
+        if (totalCC > totalClasses * 10) {
+            System.out.println("Paquete con alta complejidad");
+        } else {
+            System.out.println("Paquete saludable");
+        }
+    }
+}
+</file>
+
+</files>

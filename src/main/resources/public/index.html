@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CodeQuality Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ── DESIGN TOKENS ─────────────────────────────────── */
+:root {
+  --bg:          #0a0c10;
+  --surface:     #10141c;
+  --surface2:    #161b27;
+  --border:      #1e2535;
+  --accent:      #00e5ff;
+  --accent2:     #7c3aed;
+  --accent3:     #10b981;
+  --warn:        #f59e0b;
+  --danger:      #ef4444;
+  --text:        #e2e8f0;
+  --text-muted:  #64748b;
+  --text-dim:    #94a3b8;
+  --font-head:   'Syne', sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+  --radius:      12px;
+  --radius-lg:   20px;
+  --shadow:      0 4px 32px rgba(0,0,0,.5);
+}
+
+/* ── RESET & BASE ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-mono);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATED GRID BACKGROUND ─────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── GLOW ORBS ─────────────────────────────────────── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+.orb-1 { width: 600px; height: 600px; background: rgba(0,229,255,.07); top: -200px; left: -100px; }
+.orb-2 { width: 500px; height: 500px; background: rgba(124,58,237,.08); bottom: -100px; right: -150px; animation-delay: -8s; }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(40px, 30px) scale(1.05); } }
+
+/* ── LAYOUT ────────────────────────────────────────── */
+.wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HEADER ────────────────────────────────────────── */
+header {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 10px;
+  display: grid; place-items: center;
+  font-size: 20px;
+  box-shadow: 0 0 24px rgba(0,229,255,.3);
+}
+.brand h1 {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.brand h1 span { color: var(--accent); }
+.tagline {
+  font-size: .75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* ── ANALYZER PANEL ────────────────────────────────── */
+.analyzer-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.analyzer-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+}
+.section-label {
+  font-family: var(--font-head);
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+/* ── PATH INPUT ROW ────────────────────────────────── */
+.input-row { display: flex; gap: 12px; }
+.path-field {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: .875rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.path-field::placeholder { color: var(--text-muted); }
+.path-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,229,255,.12);
+}
+.btn {
+  font-family: var(--font-head);
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s, opacity .15s;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #0099bb 100%);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,229,255,.3);
+}
+.btn-primary:hover { box-shadow: 0 0 32px rgba(0,229,255,.5); }
+.btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ── PROGRESS BAR ──────────────────────────────────── */
+.progress-wrap { margin-top: 20px; display: none; }
+.progress-wrap.visible { display: block; }
+.progress-label {
+  font-size: .75rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.spinner {
+  width: 12px; height: 12px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.progress-bar-bg {
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 99px;
+  transition: width .4s ease;
+}
+
+/* ── SUMMARY ROW ───────────────────────────────────── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .4s, transform .4s;
+}
+.stat-card.visible { opacity: 1; transform: translateY(0); }
+.stat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.stat-card.c-blue::after  { background: var(--accent); }
+.stat-card.c-purple::after { background: var(--accent2); }
+.stat-card.c-green::after { background: var(--accent3); }
+.stat-card.c-amber::after { background: var(--warn); }
+.stat-card.c-red::after   { background: var(--danger); }
+.stat-value {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── RESULTS SECTION ───────────────────────────────── */
+#results { display: none; }
+#results.visible { display: block; }
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.results-title {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Filter pills */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  font-family: var(--font-head);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+.pill.active, .pill:hover { background: var(--surface2); color: var(--text); border-color: var(--accent); }
+
+/* ── CLASS CARD ────────────────────────────────────── */
+.class-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s, transform .5s;
+}
+.class-card.visible { opacity: 1; transform: translateY(0); }
+.class-header {
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s, background .2s;
+}
+.class-header:hover { background: var(--surface2); }
+.class-header.open { border-bottom-color: var(--border); }
+.class-score-ring {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  position: relative;
+}
+.class-score-ring svg { transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: var(--border); stroke-width: 4; }
+.ring-fill {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset .6s ease;
+}
+.score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: .75rem;
+  font-weight: 800;
+}
+.class-name {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  flex: 1;
+}
+.class-meta { font-size: .75rem; color: var(--text-muted); margin-top: 3px; }
+.badge {
+  font-family: var(--font-head);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+.badge-good    { background: rgba(16,185,129,.15); color: var(--accent3); border: 1px solid rgba(16,185,129,.3); }
+.badge-regular { background: rgba(245,158,11,.12); color: var(--warn);    border: 1px solid rgba(245,158,11,.3); }
+.badge-bad     { background: rgba(239,68,68,.12);  color: var(--danger);  border: 1px solid rgba(239,68,68,.3); }
+.badge-god     { background: rgba(239,68,68,.2);   color: #ff6b6b;        border: 1px solid rgba(239,68,68,.5); animation: pulse-badge 2s infinite; }
+@keyframes pulse-badge { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.3)} 50%{box-shadow:0 0 0 6px rgba(239,68,68,0)} }
+
+.chevron {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  transition: transform .3s;
+}
+.class-header.open .chevron { transform: rotate(180deg); }
+
+/* ── METHOD TABLE ──────────────────────────────────── */
+.methods-panel { padding: 20px 28px 28px; display: none; }
+.methods-panel.open { display: block; }
+.method-table { width: 100%; border-collapse: collapse; }
+.method-table th {
+  font-family: var(--font-head);
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.method-table td { padding: 12px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.method-table tr:last-child td { border-bottom: none; }
+.method-table tr:hover td { background: rgba(255,255,255,.02); }
+.method-name { font-family: var(--font-head); font-weight: 600; font-size: .875rem; }
+.metric-chip {
+  display: inline-block;
+  font-size: .7rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+}
+.issue-list { list-style: none; }
+.issue-item {
+  font-size: .75rem;
+  color: var(--text-dim);
+  padding: 2px 0;
+  display: flex;
+  gap: 6px;
+}
+.issue-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.dot-high   { background: var(--danger); }
+.dot-medium { background: var(--warn); }
+.dot-low    { background: var(--accent3); }
+
+/* ── AI SUGGESTION BOX ─────────────────────────────── */
+.ai-box {
+  margin-top: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: .8rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.ai-box-label {
+  font-family: var(--font-head);
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 6px;
+}
+
+/* ── ERROR STATE ───────────────────────────────────── */
+.error-box {
+  background: rgba(239,68,68,.08);
+  border: 1px solid rgba(239,68,68,.3);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  color: #fca5a5;
+  font-size: .875rem;
+  display: none;
+  margin-top: 16px;
+}
+.error-box.visible { display: block; }
+
+/* ── EMPTY STATE ───────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-muted);
+}
+.empty-icon { font-size: 3rem; margin-bottom: 16px; opacity: .4; }
+.empty-state h3 {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--text-dim);
+}
+
+/* ── FOOTER ────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .72rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 640px) {
+  .input-row { flex-direction: column; }
+  .class-name { font-size: .9rem; }
+}
+</style>
+</head>
+
+<body>
+<!-- Glow orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="wrapper">
+
+  <!-- ── HEADER ─────────────────────────────────────── -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div>
+        <h1>Code<span>Quality</span> Analyzer</h1>
+        <p class="tagline">Static analysis · AI recommendations · Java</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── ANALYZER PANEL ─────────────────────────────── -->
+  <div class="analyzer-card">
+    <p class="section-label">// Análisis de proyecto</p>
+    <div class="input-row">
+      <input
+        type="text"
+        class="path-field"
+        id="pathInput"
+        placeholder="/ruta/absoluta/a/tu/proyecto/java"
+      />
+      <button class="btn btn-primary" id="analyzeBtn" onclick="startAnalysis()">
+        Analizar →
+      </button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <p class="progress-label">
+        <span class="spinner"></span>
+        <span id="progressLabel">Analizando archivos…</span>
+      </p>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="error-box" id="errorBox"></div>
+  </div>
+
+  <!-- ── SUMMARY STATS ──────────────────────────────── -->
+  <div class="summary-grid" id="summaryGrid" style="display:none">
+    <div class="stat-card c-blue" id="sc-classes">
+      <div class="stat-value" id="sv-classes">0</div>
+      <div class="stat-label">Clases</div>
+    </div>
+    <div class="stat-card c-purple" id="sc-methods">
+      <div class="stat-value" id="sv-methods">0</div>
+      <div class="stat-label">Métodos</div>
+    </div>
+    <div class="stat-card c-green" id="sc-score">
+      <div class="stat-value" id="sv-score">—</div>
+      <div class="stat-label">Score promedio</div>
+    </div>
+    <div class="stat-card c-amber" id="sc-issues">
+      <div class="stat-value" id="sv-issues">0</div>
+      <div class="stat-label">Problemas</div>
+    </div>
+    <div class="stat-card c-red" id="sc-god">
+      <div class="stat-value" id="sv-god">0</div>
+      <div class="stat-label">God Classes</div>
+    </div>
+  </div>
+
+  <!-- ── RESULTS ────────────────────────────────────── -->
+  <section id="results">
+    <div class="results-header">
+      <h2 class="results-title">Resultados del Análisis</h2>
+      <div class="filters" id="filterBar">
+        <button class="pill active" data-filter="all" onclick="applyFilter(this)">Todos</button>
+        <button class="pill" data-filter="MALO"    onclick="applyFilter(this)">⚠ Malo</button>
+        <button class="pill" data-filter="REGULAR" onclick="applyFilter(this)">~ Regular</button>
+        <button class="pill" data-filter="BUENO"   onclick="applyFilter(this)">✓ Bueno</button>
+        <button class="pill" data-filter="god"     onclick="applyFilter(this)">🔥 God Class</button>
+      </div>
+    </div>
+    <div id="classCards"></div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <div class="empty-icon">🔍</div>
+      <h3>Sin resultados para este filtro</h3>
+      <p>Prueba con otro filtro o revisa el análisis.</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <footer>
+    <span>CodeQuality Analyzer v2.0 · Backend <a href="#">Javalin</a> + <a href="#">JavaParser</a></span>
+    <span>Powered by OpenAI GPT-4o-mini</span>
+  </footer>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── STATE ──────────────────────────────────────────────
+let allResults = [];
+let currentFilter = 'all';
+
+// ── MAIN ANALYSIS FLOW ─────────────────────────────────
+async function startAnalysis() {
+  const path = document.getElementById('pathInput').value.trim();
+  if (!path) { showError('Ingresa una ruta de proyecto válida.'); return; }
+
+  setLoading(true);
+  clearResults();
+  hideError();
+
+  animateProgress();
+
+  try {
+    const res = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showError(data.error || 'Error desconocido del servidor.');
+      return;
+    }
+
+    allResults = data;
+    renderResults(data);
+
+  } catch (err) {
+    showError('No se pudo conectar con el servidor. ¿Está corriendo en localhost:7070?');
+  } finally {
+    setLoading(false);
+  }
+}
+
+// ── RENDER ─────────────────────────────────────────────
+function renderResults(results) {
+  if (!results || results.length === 0) {
+    showEmpty();
+    return;
+  }
+
+  renderSummary(results);
+  renderCards(results);
+
+  document.getElementById('results').classList.add('visible');
+}
+
+function renderSummary(results) {
+  const totalMethods = results.reduce((s, c) => s + (c.methods?.length || 0), 0);
+  const totalIssues  = results.reduce((s, c) =>
+    s + (c.methods?.reduce((ms, m) => ms + (m.evaluation?.issues?.length || 0), 0) || 0), 0);
+  const godClasses   = results.filter(c => c.badMethodCount >= 2).length;
+  const avgScore     = results.length
+    ? Math.round(results.reduce((s, c) => s + (c.score || 0), 0) / results.length)
+    : 0;
+
+  document.getElementById('sv-classes').textContent = results.length;
+  document.getElementById('sv-methods').textContent = totalMethods;
+  document.getElementById('sv-score').textContent   = avgScore;
+  document.getElementById('sv-issues').textContent  = totalIssues;
+  document.getElementById('sv-god').textContent     = godClasses;
+
+  const grid = document.getElementById('summaryGrid');
+  grid.style.display = 'grid';
+  setTimeout(() => grid.querySelectorAll('.stat-card').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 80);
+  }), 50);
+}
+
+function renderCards(results) {
+  const container = document.getElementById('classCards');
+  container.innerHTML = '';
+
+  results.forEach((cls, idx) => {
+    const card = buildClassCard(cls);
+    card.dataset.level = cls.level || levelFromScore(cls.score);
+    card.dataset.god   = cls.badMethodCount >= 2 ? 'true' : 'false';
+    container.appendChild(card);
+    setTimeout(() => card.classList.add('visible'), idx * 80 + 100);
+  });
+}
+
+function buildClassCard(cls) {
+  const level = cls.level || levelFromScore(cls.score);
+  const score = cls.score || 0;
+  const isGod = cls.badMethodCount >= 2;
+
+  const card = document.createElement('div');
+  card.className = 'class-card';
+
+  // Score ring
+  const r = 22;
+  const circ = 2 * Math.PI * r;
+  const fill = circ * (1 - score / 100);
+  const ringColor = score >= 80 ? 'var(--accent3)' : score >= 50 ? 'var(--warn)' : 'var(--danger)';
+
+  // Badge
+  let badgeClass = level === 'BUENO' ? 'badge-good' : level === 'REGULAR' ? 'badge-regular' : 'badge-bad';
+  let badgeText  = level;
+  if (isGod) { badgeClass = 'badge-god'; badgeText = '🔥 God Class'; }
+
+  card.innerHTML = `
+    <div class="class-header" onclick="toggleClass(this)">
+      <div class="class-score-ring">
+        <svg width="52" height="52" viewBox="0 0 52 52">
+          <circle class="ring-bg" cx="26" cy="26" r="${r}" />
+          <circle class="ring-fill" cx="26" cy="26" r="${r}"
+            stroke="${ringColor}"
+            stroke-dasharray="${circ}"
+            stroke-dashoffset="${fill}" />
+        </svg>
+        <div class="score-text" style="color:${ringColor}">${score}</div>
+      </div>
+      <div style="flex:1">
+        <div class="class-name">${cls.className}</div>
+        <div class="class-meta">${cls.methods?.length || 0} método(s) · ${cls.badMethodCount || 0} problemático(s)</div>
+      </div>
+      <span class="badge ${badgeClass}">${badgeText}</span>
+      <span class="chevron">⌄</span>
+    </div>
+    <div class="methods-panel">
+      ${buildMethodsTable(cls)}
+      ${isGod && cls.aiClassSuggestion ? buildAIBox('Recomendación Arquitectónica', cls.aiClassSuggestion) : ''}
+    </div>
+  `;
+  return card;
+}
+
+function buildMethodsTable(cls) {
+  if (!cls.methods || cls.methods.length === 0) {
+    return '<p style="font-size:.8rem;color:var(--text-muted)">Sin métodos encontrados.</p>';
+  }
+
+  const rows = cls.methods.map(m => {
+    const metrics = m.metrics || {};
+    const eval_   = m.evaluation || {};
+    const issues  = eval_.issues || [];
+    const score   = eval_.score ?? 100;
+    const hasIssues = issues.length > 0;
+
+    const issuesSummary = hasIssues
+      ? `<ul class="issue-list">${issues.map(i => `
+          <li class="issue-item">
+            <span class="issue-dot ${dotClass(i.type)}"></span>
+            <span><strong>${i.type}</strong> — ${i.description || ''}</span>
+          </li>`).join('')}
+         </ul>`
+      : `<span style="color:var(--accent3);font-size:.75rem">✓ Sin problemas</span>`;
+
+    const aiBox = hasIssues && issues[0]?.suggestion
+      ? buildAIBox('Sugerencia IA', issues[0].suggestion)
+      : '';
+
+    return `
+      <tr>
+        <td><span class="method-name">${metrics.methodName || '?'}</span></td>
+        <td>
+          <span class="metric-chip">LOC ${metrics.loc ?? '?'}</span>&nbsp;
+          <span class="metric-chip">CC ${metrics.cyclomaticComplexity ?? '?'}</span>
+        </td>
+        <td>${issuesSummary}${aiBox}</td>
+        <td>
+          <span style="font-family:var(--font-head);font-weight:800;color:${score>=80?'var(--accent3)':score>=50?'var(--warn)':'var(--danger)'}">${score}</span>
+        </td>
+      </tr>`;
+  }).join('');
+
+  return `
+    <table class="method-table">
+      <thead>
+        <tr>
+          <th>Método</th>
+          <th>Métricas</th>
+          <th>Problemas / Recomendaciones</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function buildAIBox(label, text) {
+  return `
+    <div class="ai-box">
+      <div class="ai-box-label">✦ ${label}</div>
+      ${text}
+    </div>`;
+}
+
+function dotClass(type) {
+  if (!type) return 'dot-low';
+  const t = type.toLowerCase();
+  if (t.includes('high') || t.includes('god') || t.includes('risky')) return 'dot-high';
+  if (t.includes('moderate') || t.includes('long')) return 'dot-medium';
+  return 'dot-low';
+}
+
+// ── TOGGLE CLASS CARD ──────────────────────────────────
+function toggleClass(header) {
+  header.classList.toggle('open');
+  const panel = header.nextElementSibling;
+  panel.classList.toggle('open');
+}
+
+// ── FILTER ─────────────────────────────────────────────
+function applyFilter(btn) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.filter;
+
+  const cards = document.querySelectorAll('.class-card');
+  let visible = 0;
+  cards.forEach(card => {
+    let show = true;
+    if (currentFilter === 'god') show = card.dataset.god === 'true';
+    else if (currentFilter !== 'all') show = card.dataset.level === currentFilter;
+
+    card.style.display = show ? 'block' : 'none';
+    if (show) visible++;
+  });
+
+  document.getElementById('emptyState').style.display = visible === 0 ? 'flex' : 'none';
+}
+
+// ── LOADING + PROGRESS ─────────────────────────────────
+function setLoading(on) {
+  document.getElementById('analyzeBtn').disabled = on;
+  document.getElementById('analyzeBtn').textContent = on ? 'Analizando…' : 'Analizar →';
+  document.getElementById('progressWrap').classList.toggle('visible', on);
+}
+
+function animateProgress() {
+  const fill = document.getElementById('progressFill');
+  const label = document.getElementById('progressLabel');
+  const steps = [
+    [10, 'Escaneando archivos Java…'],
+    [35, 'Calculando métricas (LOC, CC)…'],
+    [60, 'Evaluando reglas de calidad…'],
+    [80, 'Consultando recomendaciones IA…'],
+    [95, 'Generando informe…'],
+  ];
+  let i = 0;
+  const tick = setInterval(() => {
+    if (i >= steps.length) { clearInterval(tick); return; }
+    const [pct, msg] = steps[i++];
+    fill.style.width = pct + '%';
+    label.textContent = msg;
+  }, 700);
+}
+
+// ── HELPERS ────────────────────────────────────────────
+function clearResults() {
+  document.getElementById('classCards').innerHTML = '';
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('summaryGrid').style.display = 'none';
+  document.getElementById('emptyState').style.display = 'none';
+  document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('visible'));
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorBox');
+  el.textContent = '⚠ ' + msg;
+  el.classList.add('visible');
+}
+
+function hideError() {
+  document.getElementById('errorBox').classList.remove('visible');
+}
+
+function showEmpty() {
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('emptyState').style.display = 'flex';
+}
+
+function levelFromScore(s) {
+  return s >= 80 ? 'BUENO' : s >= 50 ? 'REGULAR' : 'MALO';
+}
+
+// ── ENTER KEY SHORTCUT ─────────────────────────────────
+document.getElementById('pathInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') startAnalysis();
+});
+
+// ── DEMO MODE (when no backend is running) ─────────────
+// Remove this block in production. Uncomment to test UI offline.
+/*
+window.addEventListener('DOMContentLoaded', () => {
+  // fetch mock is defined below for demo purposes
+});
+*/
+</script>
+</body>
+</html>
