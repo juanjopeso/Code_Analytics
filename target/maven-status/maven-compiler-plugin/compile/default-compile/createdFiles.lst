@@ -1,4 +1,6 @@
+main\Main$AnalyzeRequest.class
 rules\RuleEngine.class
+main\Main$ErrorResponse.class
 graph\CFGBuilder.class
 main\Main.class
 ia\RecommendationBuilder.class
@@ -11,6 +13,7 @@ graph\CFGGraph.class
 rules\LongMethodRule.class
 rules\RiskyMethodRule.class
 metrics\CyclomaticComplexityMetric.class
+parser\JavaParserService$ClassAnalysisResult.class
 rules\QualityIssue.class
 parser\JavaParserService.class
 ia\AIRecommendationService.class
@@ -19,6 +22,7 @@ report\ReportTXT.class
 ui\AnalyzerUI$1.class
 metrics\ClassMetrics.class
 rules\QualityRule.class
+parser\JavaParserService$MethodAnalysisResult.class
 graph\GraphvizExporter.class
 report\ReportJSON.class
 rules\ClassRule.class
@@ -28,6 +32,7 @@ rules\EvaluationMode.class
 rules\EvaluationResult.class
 graph\CFGEdge.class
 graph\CFGNode.class
+ia\integration\OpenAIRecommendationService$AIServiceException.class
 ui\AnalyzerUI.class
 rules\MethodRule.class
 report\JsonReportExporter.class

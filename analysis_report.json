@@ -2,95 +2,6 @@
   {
     "class": "clogin",
     "method": "validarus",
-    "loc": 40,
-    "cyclomaticComplexity": 7,
-    "score": 15,
-    "issues": [
-      {
-        "type": "Long Method",
-        "description": "El método tiene más de 30 líneas (40)",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad, lo que reducirá la longitud total y la complejidad ciclomática. Además, considere simplificar la lógica condicional y eliminar cualquier código redundante. Esto no solo facilitará las pruebas unitarias, sino que también mejorará la comprensión del código por parte de otros desarrolladores. Implementar estas mejoras contribuirá a un código más limpio y eficiente."
-      },
-      {
-        "type": "Moderate Complexity",
-        "description": "Complejidad ciclomática moderada (7)",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad, lo que reducirá la longitud total y la complejidad ciclomática. Además, considere simplificar la lógica condicional y eliminar cualquier código redundante. Esto no solo facilitará las pruebas unitarias, sino que también mejorará la comprensión del código por parte de otros desarrolladores. Implementar estas mejoras contribuirá a un código más limpio y eficiente."
-      },
-      {
-        "type": "Moderate Complexity",
-        "description": "Complejidad ciclomática moderada (7)",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad, lo que reducirá la longitud total y la complejidad ciclomática. Además, considere simplificar la lógica condicional y eliminar cualquier código redundante. Esto no solo facilitará las pruebas unitarias, sino que también mejorará la comprensión del código por parte de otros desarrolladores. Implementar estas mejoras contribuirá a un código más limpio y eficiente."
-      },
-      {
-        "type": "Risky Method",
-        "description": "Método largo y complejo",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad, lo que reducirá la longitud total y la complejidad ciclomática. Además, considere simplificar la lógica condicional y eliminar cualquier código redundante. Esto no solo facilitará las pruebas unitarias, sino que también mejorará la comprensión del código por parte de otros desarrolladores. Implementar estas mejoras contribuirá a un código más limpio y eficiente."
-      }
-    ]
-  },
-  {
-    "class": "conexion",
-    "method": "conectar",
-    "loc": 11,
-    "cyclomaticComplexity": 2,
-    "score": 100,
-    "issues": []
-  },
-  {
-    "class": "inicio",
-    "method": "initComponents",
-    "loc": 59,
-    "cyclomaticComplexity": 1,
-    "score": 65,
-    "issues": [
-      {
-        "type": "Long Method",
-        "description": "El método tiene más de 50 líneas (59)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que encapsulen funcionalidades relacionadas, como la inicialización de componentes individuales o la configuración de propiedades. Esto no solo reducirá la longitud del método, sino que también facilitará la comprensión del código y la identificación de posibles errores. Además, al aplicar el principio de responsabilidad única, cada método podrá ser probado y mantenido de manera más eficiente."
-      }
-    ]
-  },
-  {
-    "class": "inicio",
-    "method": "jButton1ActionPerformed",
-    "loc": 5,
-    "cyclomaticComplexity": 1,
-    "score": 100,
-    "issues": []
-  },
-  {
-    "class": "inicio_secion",
-    "method": "initComponents",
-    "loc": 41,
-    "cyclomaticComplexity": 1,
-    "score": 80,
-    "issues": [
-      {
-        "type": "Long Method",
-        "description": "El método tiene más de 30 líneas (41)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 30 líneas, considere dividirlo en submétodos más pequeños, cada uno encargado de una tarea específica, como la inicialización de componentes o la configuración de eventos. Esto no solo reducirá la longitud del método, sino que también facilitará la comprensión del código y permitirá una mejor reutilización. Además, una menor complejidad ciclomática contribuirá a un código más limpio y fácil de probar."
-      }
-    ]
-  },
-  {
-    "class": "Login",
-    "method": "main",
-    "loc": 6,
-    "cyclomaticComplexity": 1,
-    "score": 100,
-    "issues": []
-  },
-  {
-    "class": "Simplecalculator",
-    "method": "main",
-    "loc": 18,
-    "cyclomaticComplexity": 3,
-    "score": 100,
-    "issues": []
-  },
-  {
-    "class": "clogin",
-    "method": "validarus",
     "loc": 52,
     "cyclomaticComplexity": 9,
     "score": 10,
@@ -98,17 +9,17 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (52)",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Para ello, divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad. Esto reducirá la complejidad ciclomática, facilitando la comprensión del flujo lógico. Además, considere simplificar las condiciones y bucles, y utilizar nombres descriptivos para los nuevos métodos. Esta refactorización no solo disminuirá el tamaño del método, sino que también mejorará la capacidad de prueba y la gestión de errores, reduciendo así el riesgo asociado a su uso."
+        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños, cada uno con una única responsabilidad, lo que reducirá la complejidad ciclomática y el número de líneas de código. Considere utilizar patrones de diseño como el patrón de estrategia o el patrón de estado, si es aplicable, para manejar la lógica condicional. Además, asegúrese de que cada método tenga un nombre descriptivo que refleje su funcionalidad, facilitando así la comprensión del código. Esta refactorización no solo mejorará la calidad del código, sino que también reducirá el riesgo de errores."
       },
       {
         "type": "High Complexity",
         "description": "Complejidad ciclomática muy alta (9)",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Para ello, divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad. Esto reducirá la complejidad ciclomática, facilitando la comprensión del flujo lógico. Además, considere simplificar las condiciones y bucles, y utilizar nombres descriptivos para los nuevos métodos. Esta refactorización no solo disminuirá el tamaño del método, sino que también mejorará la capacidad de prueba y la gestión de errores, reduciendo así el riesgo asociado a su uso."
+        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños, cada uno con una única responsabilidad, lo que reducirá la complejidad ciclomática y el número de líneas de código. Considere utilizar patrones de diseño como el patrón de estrategia o el patrón de estado, si es aplicable, para manejar la lógica condicional. Además, asegúrese de que cada método tenga un nombre descriptivo que refleje su funcionalidad, facilitando así la comprensión del código. Esta refactorización no solo mejorará la calidad del código, sino que también reducirá el riesgo de errores."
       },
       {
         "type": "Risky Method",
         "description": "Método largo y complejo",
-        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Para ello, divídalo en métodos más pequeños y específicos, cada uno con una única responsabilidad. Esto reducirá la complejidad ciclomática, facilitando la comprensión del flujo lógico. Además, considere simplificar las condiciones y bucles, y utilizar nombres descriptivos para los nuevos métodos. Esta refactorización no solo disminuirá el tamaño del método, sino que también mejorará la capacidad de prueba y la gestión de errores, reduciendo así el riesgo asociado a su uso."
+        "suggestion": "Se recomienda refactorizar el método `validarus` para mejorar su legibilidad y mantenibilidad. Divídalo en métodos más pequeños, cada uno con una única responsabilidad, lo que reducirá la complejidad ciclomática y el número de líneas de código. Considere utilizar patrones de diseño como el patrón de estrategia o el patrón de estado, si es aplicable, para manejar la lógica condicional. Además, asegúrese de que cada método tenga un nombre descriptivo que refleje su funcionalidad, facilitando así la comprensión del código. Esta refactorización no solo mejorará la calidad del código, sino que también reducirá el riesgo de errores."
       }
     ]
   },
@@ -138,7 +49,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 30 líneas (35)",
-        "suggestion": "Se recomienda refactorizar el método `modificarProducto` para mejorar su legibilidad y mantenibilidad. Dado que supera las 30 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como validar datos, actualizar información y manejar excepciones. Esto no solo reducirá la complejidad ciclomática, facilitando la comprensión del flujo lógico, sino que también permitirá reutilizar código y realizar pruebas unitarias de manera más efectiva. Además, asegúrese de documentar cada nuevo método para mantener la claridad del propósito de cada uno."
+        "suggestion": "Se recomienda refactorizar el método `modificarProducto` para mejorar su legibilidad y mantenibilidad. Dado que la complejidad ciclomática es de 4 y el método excede las 30 líneas, considere dividirlo en submétodos que encapsulen funcionalidades específicas. Esto no solo reducirá la longitud del método principal, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de que cada submétodo tenga una única responsabilidad, lo que contribuirá a un diseño más limpio y modular."
       }
     ]
   },
@@ -160,7 +71,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (52)",
-        "suggestion": "Se recomienda refactorizar el método `buscarProductos` para mejorar su legibilidad y mantenibilidad. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas. Esto no solo reducirá la longitud del método, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de que cada método tenga una única responsabilidad, lo que contribuirá a una mejor organización y a una menor complejidad ciclomática. Implementar estas mejoras permitirá un desarrollo más ágil y eficiente en el futuro."
+        "suggestion": "Se recomienda refactorizar el método `buscarProductos` para mejorar su legibilidad y mantenibilidad. Dado que el método excede las 50 líneas, considere dividirlo en submétodos más pequeños que realicen tareas específicas. Esto no solo reducirá la longitud del método principal, sino que también facilitará las pruebas unitarias y el entendimiento del código. Además, asegúrese de que cada submétodo tenga una única responsabilidad, lo que ayudará a mantener una baja complejidad ciclomática y a mejorar la calidad general del código."
       }
     ]
   },
@@ -174,7 +85,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 30 líneas (48)",
-        "suggestion": "Se recomienda refactorizar el método `mostrarProductos` para mejorar su legibilidad y mantenibilidad. Dado que supera las 30 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas. Esto no solo reducirá la complejidad ciclomática, facilitando su comprensión, sino que también permitirá reutilizar el código en otras partes de la aplicación. Además, asegúrese de que cada método tenga una única responsabilidad, lo que contribuirá a un diseño más limpio y modular."
+        "suggestion": "Se recomienda refactorizar el método `mostrarProductos` para mejorar su legibilidad y mantenibilidad. Dado que supera las 30 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como la obtención de datos, la formateación y la presentación de productos. Esto no solo reducirá la longitud del método, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de que cada nuevo método tenga una única responsabilidad, lo que contribuirá a una mejor organización y a una menor complejidad ciclomática."
       }
     ]
   },
@@ -204,7 +115,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 30 líneas (34)",
-        "suggestion": "Se recomienda refactorizar el método `mostrarVentas` para mejorar su legibilidad y mantenibilidad. Divida el método en submétodos más pequeños, cada uno encargado de una tarea específica, como la obtención de datos, el formato de salida y la presentación. Esto no solo reducirá la longitud del método principal, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, considere la posibilidad de aplicar principios de diseño como la responsabilidad única para mejorar la estructura general del código."
+        "suggestion": "Se recomienda refactorizar el método `mostrarVentas` para mejorar su legibilidad y mantenibilidad. Dado que excede las 30 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas. Esto no solo reducirá la complejidad ciclomática, sino que facilitará las pruebas unitarias y el entendimiento del código. Además, asegúrese de que cada método tenga una única responsabilidad, lo que contribuirá a un diseño más limpio y modular."
       }
     ]
   },
@@ -218,7 +129,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 30 líneas (38)",
-        "suggestion": "Se recomienda refactorizar el método `mostrarDetalleVenta` para mejorar su legibilidad y mantenibilidad. Dado que el método excede las 30 líneas, considere dividirlo en submétodos más pequeños y específicos que realicen tareas concretas. Esto no solo reducirá la longitud del método principal, sino que también facilitará la comprensión del flujo de trabajo y permitirá una mejor reutilización del código. Además, asegúrese de que cada submétodo tenga una única responsabilidad, lo que contribuirá a una menor complejidad ciclomática y a un código más limpio y fácil de probar."
+        "suggestion": "Se recomienda refactorizar el método `mostrarDetalleVenta` para mejorar su legibilidad y mantenibilidad. Dado que excede las 30 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas. Esto no solo reducirá la longitud del método, sino que también facilitará la comprensión del flujo de la lógica y permitirá realizar pruebas unitarias de manera más efectiva. Además, evalúe la posibilidad de aplicar principios de diseño como la separación de responsabilidades para mejorar la estructura general del código."
       }
     ]
   },
@@ -240,7 +151,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (129)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes, configurar propiedades o agregar listeners. Esto no solo reducirá la longitud del método, sino que también facilitará la comprensión del código y permitirá realizar pruebas unitarias de manera más efectiva. Además, asegúrese de documentar cada submétodo para clarificar su propósito y funcionamiento."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes, configurar propiedades o agregar listeners. Esta práctica no solo reducirá la complejidad ciclomática, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de seguir principios de diseño como la responsabilidad única para cada método, lo que contribuirá a un código más limpio y organizado."
       }
     ]
   },
@@ -294,7 +205,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 30 líneas (33)",
-        "suggestion": "Se recomienda refactorizar el método `jButtonEliminarActionPerformed` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 30 líneas, considere dividirlo en submétodos que encapsulen funcionalidades específicas, como la validación de datos, la eliminación de registros y la actualización de la interfaz. Esto no solo reducirá la longitud del método principal, sino que también facilitará las pruebas unitarias y la comprensión del flujo de trabajo. Además, asegúrese de que cada submétodo tenga un propósito claro y esté debidamente documentado."
+        "suggestion": "Se recomienda refactorizar el método `jButtonEliminarActionPerformed` para mejorar su legibilidad y mantenibilidad. Dado que su longitud supera las 30 líneas, considere dividirlo en métodos más pequeños que encapsulen funcionalidades específicas. Esto no solo reducirá la complejidad ciclomática, sino que también facilitará las pruebas unitarias y la comprensión del código. Identifique bloques de código que realicen tareas independientes y extraiga cada uno a un método separado, asegurando que cada método tenga una única responsabilidad. Esta práctica mejorará la calidad del código y facilitará futuras modificaciones."
       }
     ]
   },
@@ -316,7 +227,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (67)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método excede las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que realicen tareas concretas, como la inicialización de componentes individuales o la configuración de propiedades. Esta práctica no solo reducirá la longitud del método, sino que también facilitará la comprensión del código y permitirá una mejor reutilización. Además, asegúrese de que cada submétodo tenga un propósito claro y esté debidamente documentado."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar la legibilidad y mantenibilidad del código. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes, configurar propiedades y agregar listeners. Esto no solo reducirá la longitud del método, sino que también facilitará las pruebas unitarias y la comprensión del flujo del código. Además, asegúrese de que cada nuevo método tenga un nombre descriptivo que refleje su funcionalidad."
       }
     ]
   },
@@ -354,7 +265,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (69)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños que encapsulen funcionalidades específicas, como la inicialización de componentes, configuración de eventos y estilos. Esto no solo reducirá la complejidad, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de documentar cada submétodo para clarificar su propósito y uso."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes, configurar propiedades o establecer eventos. Esto no solo reducirá la complejidad ciclomática, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de que cada nuevo método tenga un nombre descriptivo que refleje su funcionalidad, lo que mejorará la claridad del código."
       }
     ]
   },
@@ -376,7 +287,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (77)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños, cada uno encargado de una tarea específica, como la inicialización de componentes, la configuración de propiedades o la gestión de eventos. Esta práctica no solo reducirá la longitud del método, sino que también facilitará la comprensión y el testing de cada parte del proceso. Además, asegúrese de que cada submétodo tenga un nombre descriptivo que refleje su funcionalidad."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños, cada uno encargado de una tarea específica, como la inicialización de componentes, la configuración de eventos o la asignación de propiedades. Esto no solo reducirá la longitud del método, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de que cada submétodo tenga un nombre descriptivo que refleje su funcionalidad."
       }
     ]
   },
@@ -422,7 +333,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (69)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que realicen tareas concretas, como la inicialización de componentes individuales o la configuración de propiedades. Esto no solo reducirá la longitud del método principal, sino que también facilitará la comprensión del código y permitirá una mejor reutilización. Además, una menor complejidad ciclomática contribuirá a un código más limpio y menos propenso a errores."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, es aconsejable dividirlo en submétodos más pequeños y específicos, cada uno encargado de inicializar un componente particular o un grupo de componentes relacionados. Esto no solo reducirá la complejidad del método principal, sino que también facilitará futuras modificaciones y pruebas unitarias. Además, considera aplicar principios de diseño como la responsabilidad única para cada submétodo, lo que contribuirá a un código más limpio y organizado."
       }
     ]
   },
@@ -460,7 +371,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (82)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que su longitud supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes individuales o configurar propiedades específicas. Esto no solo reducirá la complejidad ciclomática, sino que también facilitará las pruebas unitarias y la comprensión del código. Asegúrese de que cada nuevo método tenga un nombre descriptivo que refleje su funcionalidad."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que encapsulen funcionalidades relacionadas. Esto no solo reducirá la complejidad ciclomática, sino que también facilitará la comprensión del código y la realización de pruebas unitarias. Identifique bloques de código que realicen tareas similares y extraiga esos bloques en métodos independientes, asegurando que cada uno tenga una responsabilidad clara y bien definida."
       }
     ]
   },
@@ -506,7 +417,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (71)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que realicen tareas concretas, como la inicialización de componentes individuales o la configuración de propiedades. Esto no solo reducirá la longitud del método, sino que también facilitará la comprensión y el testing de cada parte. Además, asegúrese de que cada submétodo tenga un nombre descriptivo que refleje su funcionalidad. Esto contribuirá a un código más limpio y modular."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que su longitud supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas concretas, como inicializar componentes individuales o configurar propiedades específicas. Esto no solo reducirá la complejidad del método, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de seguir principios de diseño como la cohesión y el acoplamiento para optimizar la estructura del código."
       }
     ]
   },
@@ -544,7 +455,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (71)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños, cada uno encargado de una tarea específica, como la inicialización de componentes, la configuración de eventos y la asignación de propiedades. Esta práctica no solo reducirá la longitud del método principal, sino que también facilitará la comprensión del código y permitirá realizar pruebas unitarias más efectivas. Además, asegúrese de documentar adecuadamente cada submétodo para mejorar la claridad del propósito de cada sección."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que excede las 50 líneas, considere dividirlo en métodos más pequeños y específicos que se encarguen de tareas individuales, como la creación de componentes, la configuración de propiedades y la adición de listeners. Esta práctica no solo reducirá la longitud del método, sino que también facilitará las pruebas unitarias y la comprensión del código. Además, asegúrese de documentar adecuadamente cada nuevo método para mantener la claridad en su funcionalidad."
       }
     ]
   },
@@ -582,7 +493,7 @@
       {
         "type": "Long Method",
         "description": "El método tiene más de 50 líneas (68)",
-        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que el método supera las 50 líneas, considere dividirlo en submétodos más pequeños y específicos que encapsulen funcionalidades relacionadas. Esto no solo reducirá la longitud del método principal, sino que también facilitará la comprensión del código y la identificación de posibles errores. Además, al aplicar el principio de responsabilidad única, cada submétodo podrá enfocarse en una tarea específica, mejorando así la modularidad del código."
+        "suggestion": "Se recomienda refactorizar el método `initComponents` para mejorar su legibilidad y mantenibilidad. Dado que supera las 50 líneas, considere dividirlo en métodos más pequeños y específicos que realicen tareas individuales, como inicializar componentes, configurar propiedades y agregar listeners. Esto no solo reducirá la complejidad del método, sino que también facilitará las pruebas unitarias y la identificación de errores. Asegúrese de que cada nuevo método tenga un nombre descriptivo que refleje su funcionalidad, lo que mejorará la comprensión del código para futuros desarrolladores."
       }
     ]
   },
