@@ -1,0 +1,19 @@
+digraph CFG {
+  "START" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "STMT";
+  "STMT" -> "IF";
+  "IF" -> "THEN";
+  "IF" -> "ELSE";
+  "JOIN" -> "IF";
+  "IF" -> "THEN";
+  "IF" -> "ELSE";
+  "JOIN" -> "STMT";
+  "STMT" -> "END";
+}
