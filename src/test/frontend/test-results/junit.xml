@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="106" failures="0" errors="0" time="8.325">
+    <testsuite name="tests/card-builders.test.js" timestamp="2026-05-06T20:33:25.458Z" hostname="juandi" tests="31" failures="0" errors="0" skipped="0" time="0.7530695">
+        <testcase classname="tests/card-builders.test.js" name="buildAIBox &gt; contains the label text" time="0.0093584">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildAIBox &gt; contains the body text" time="0.0010615">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildAIBox &gt; includes the ai-box class" time="0.002488">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildAIBox &gt; includes the ✦ decorative symbol" time="0.000507">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — empty &gt; shows &quot;Sin métodos encontrados&quot; when methods array is empty" time="0.0009981">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — empty &gt; shows &quot;Sin métodos encontrados&quot; when methods is undefined" time="0.0004538">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — clean method &gt; renders the method name" time="0.1005895">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — clean method &gt; renders the LOC chip" time="0.0233529">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — clean method &gt; renders the CC chip" time="0.043261">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — clean method &gt; shows &quot;Sin problemas&quot; for a clean method" time="0.0347886">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — clean method &gt; does NOT render an AI box for a clean method" time="0.0314195">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; renders each issue type in the table" time="0.0249704">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; renders the issue description" time="0.018519">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; renders a dot-high class for High Complexity issue" time="0.0192512">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; renders a dot-medium class for Long Method issue" time="0.0310768">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; renders the AI suggestion box for the first issue with suggestion" time="0.0299556">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildMethodsTable — method with issues &gt; does NOT render &quot;Sin problemas&quot; when there are issues" time="0.0273814">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; creates a div with class &quot;class-card&quot;" time="0.0291836">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; sets dataset.level to BUENO for score=100" time="0.0254119">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; sets dataset.god to false for clean class" time="0.0111937">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; displays the class name" time="0.0238324">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; shows badge-good badge" time="0.0149934">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; does NOT show god badge for clean class" time="0.0253314">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — clean class &gt; shows the score value" time="0.0192284">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — God Class &gt; sets dataset.god to true" time="0.0623894">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — God Class &gt; shows the badge-god badge" time="0.0442635">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — God Class &gt; badge text includes &quot;God Class&quot;" time="0.0164113">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — God Class &gt; sets dataset.level based on score" time="0.0271992">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — badge levels &gt; shows badge-good for BUENO class" time="0.0234055">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — badge levels &gt; shows badge-regular for REGULAR class" time="0.0121789">
+        </testcase>
+        <testcase classname="tests/card-builders.test.js" name="buildClassCard — badge levels &gt; shows badge-bad for MALO class" time="0.0108533">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/dom-functions.test.js" timestamp="2026-05-06T20:33:25.559Z" hostname="juandi" tests="24" failures="0" errors="0" skipped="0" time="0.5974974">
+        <testcase classname="tests/dom-functions.test.js" name="showError &gt; prefixes the message with the warning symbol ⚠" time="0.080738">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="showError &gt; adds the &quot;visible&quot; class to errorBox" time="0.0337809">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="showError &gt; replaces previous error message" time="0.0335774">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="hideError &gt; removes &quot;visible&quot; class from errorBox" time="0.0225246">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="hideError &gt; is idempotent when called twice" time="0.0168169">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="showEmpty &gt; adds &quot;visible&quot; class to #results" time="0.0223861">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="showEmpty &gt; sets emptyState display to flex" time="0.0206352">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="clearResults &gt; empties classCards container" time="0.0614707">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="clearResults &gt; removes &quot;visible&quot; class from #results" time="0.0366709">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="clearResults &gt; hides summaryGrid" time="0.030614">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="clearResults &gt; hides emptyState" time="0.0173155">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="clearResults &gt; removes &quot;visible&quot; class from every stat-card" time="0.0353523">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; disables the analyze button when loading=true" time="0.0193756">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; changes button text to &quot;Analizando…&quot; when loading=true" time="0.014365">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; adds &quot;visible&quot; class to progressWrap when loading=true" time="0.0120834">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; re-enables the button when loading=false" time="0.0195746">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; restores button text to &quot;Analizar →&quot; when loading=false" time="0.0141275">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="setLoading &gt; removes &quot;visible&quot; from progressWrap when loading=false" time="0.0194888">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; renders class count correctly" time="0.0140282">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; renders total methods correctly" time="0.0172597">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; renders average score (rounded)" time="0.0141696">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; renders total issues count" time="0.0073621">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; renders god class count" time="0.0134466">
+        </testcase>
+        <testcase classname="tests/dom-functions.test.js" name="renderSummary &gt; sets summaryGrid display to &quot;grid&quot;" time="0.0120229">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/filter-and-interaction.test.js" timestamp="2026-05-06T20:33:25.598Z" hostname="juandi" tests="20" failures="0" errors="0" skipped="0" time="0.6936416">
+        <testcase classname="tests/filter-and-interaction.test.js" name="toggleClass &gt; adds &quot;open&quot; class to header on first click" time="0.109336">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="toggleClass &gt; adds &quot;open&quot; class to panel on first click" time="0.0335071">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="toggleClass &gt; removes &quot;open&quot; class from header on second click (toggle)" time="0.0217366">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="toggleClass &gt; removes &quot;open&quot; class from panel on second click" time="0.0250204">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; shows all cards with filter &quot;all&quot;" time="0.0832071">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; only shows BUENO cards with filter &quot;BUENO&quot;" time="0.0291804">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; only shows REGULAR cards with filter &quot;REGULAR&quot;" time="0.0176883">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; only shows MALO cards with filter &quot;MALO&quot;" time="0.0211648">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; only shows god=true cards with filter &quot;god&quot;" time="0.0202655">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; activates the clicked pill and deactivates others" time="0.0332333">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; shows emptyState when no cards match the filter" time="0.0147071">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="applyFilter &gt; hides emptyState when at least one card is visible" time="0.0248688">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="startAnalysis path validation &gt; showError is called when path is empty" time="0.0206017">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="startAnalysis path validation &gt; errorBox has class &quot;visible&quot; after empty-path submission" time="0.0131805">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="startAnalysis — fetch mock &gt; renders summary stats after successful fetch" time="0.0212146">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="startAnalysis — fetch mock &gt; shows error when fetch returns non-ok response" time="0.0189499">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="startAnalysis — fetch mock &gt; shows network error message when fetch throws" time="0.0174209">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="integrated flow: clear → render → filter &gt; classCards is empty after clearResults" time="0.0224291">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="integrated flow: clear → render → filter &gt; can build and append multiple class cards" time="0.10473">
+        </testcase>
+        <testcase classname="tests/filter-and-interaction.test.js" name="integrated flow: clear → render → filter &gt; filterBar starts with &quot;all&quot; pill active" time="0.032484">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/pure-functions.test.js" timestamp="2026-05-06T20:33:25.610Z" hostname="juandi" tests="31" failures="0" errors="0" skipped="0" time="0.0445736">
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns BUENO for score exactly 80" time="0.005358">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns BUENO for score above 80" time="0.000566">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns REGULAR for score exactly 50" time="0.0005546">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns REGULAR for scores between 50 and 79" time="0.0015894">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns MALO for score exactly 49" time="0.0003821">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns MALO for score 0" time="0.000407">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="levelFromScore &gt; returns MALO for negative score" time="0.0003212">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-high for &quot;High Complexity&quot;" time="0.0004449">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-high for &quot;Risky Method&quot;" time="0.0090388">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-high for &quot;GOD_CLASS&quot; (uppercase)" time="0.0004571">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-medium for &quot;Moderate Complexity&quot;" time="0.0003067">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-medium for &quot;Long Method&quot;" time="0.0002668">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-low for unknown type" time="0.0002446">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-low for null" time="0.0002361">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; returns dot-low for empty string" time="0.0002194">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="dotClass &gt; is case-insensitive" time="0.003658">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; returns all zeros for empty array" time="0.0039516">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; returns all zeros for null input" time="0.0005369">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; counts classes correctly" time="0.000664">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; sums methods across all classes" time="0.0003949">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; computes average score rounded" time="0.0003658">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; rounds avgScore correctly (no decimals)" time="0.0003671">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; counts total issues across all methods" time="0.0008701">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; counts god classes (badMethodCount &gt;= 2)" time="0.0004908">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; does NOT count class with badMethodCount = 1 as god class" time="0.0003825">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="computeSummary &gt; handles class with no methods gracefully" time="0.0003791">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="cardMatchesFilter &gt; &quot;all&quot; filter always shows the card" time="0.0003906">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="cardMatchesFilter &gt; &quot;god&quot; filter only shows cards with god=true" time="0.0009313">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="cardMatchesFilter &gt; &quot;BUENO&quot; filter matches only level BUENO" time="0.0006647">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="cardMatchesFilter &gt; &quot;REGULAR&quot; filter matches only level REGULAR" time="0.001032">
+        </testcase>
+        <testcase classname="tests/pure-functions.test.js" name="cardMatchesFilter &gt; &quot;MALO&quot; filter matches only level MALO" time="0.0004578">
+        </testcase>
+    </testsuite>
+</testsuites>

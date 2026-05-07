@@ -1,0 +1,17 @@
+{
+  "name": "codequalityanalyzer-frontend-tests",
+  "version": "1.0.0",
+  "description": "Pruebas unitarias para la interfaz web de CodeQualityAnalyzer",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.0.0",
+    "@vitest/ui": "^2.1.9",
+    "jsdom": "^24.0.0",
+    "vitest": "^2.0.0"
+  }
+}

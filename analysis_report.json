@@ -1,0 +1,16 @@
+[
+  {
+    "class": "WithIssues",
+    "method": "big",
+    "loc": 62,
+    "cyclomaticComplexity": 1,
+    "score": 65,
+    "issues": [
+      {
+        "type": "Long Method",
+        "description": "El método tiene más de 50 líneas (62)",
+        "suggestion": "Sugerencia simulada de IA."
+      }
+    ]
+  }
+]

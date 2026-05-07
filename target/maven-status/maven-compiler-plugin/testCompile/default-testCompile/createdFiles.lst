@@ -1,4 +1,7 @@
-metrics\LocMetricTest.class
 rules\RuleEngineTest.class
-rules\HighComplexityRuleTest.class
+ia\integration\OpenAIRecommendationServiceTest$StubAIService.class
 metrics\CyclomaticComplexityMetricTest.class
+metrics\LocMetricTest.class
+ia\integration\OpenAIRecommendationServiceTest.class
+rules\HighComplexityRuleTest.class
+ia\integration\OpenAIRecommendationServiceTest$FailingAIService.class
